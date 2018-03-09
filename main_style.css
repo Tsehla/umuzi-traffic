@@ -1,0 +1,112 @@
+
+
+*{border:1px black solid;}
+
+
+body{background-color: brown;
+     font-size: 5px;
+      perspective:800px;
+      transform-style: preserve-3d;
+      color: white;
+      }
+     
+     
+#body_contents_container{
+     transform-origin:top-left;
+     position: absolute;
+     transform:translate(-139px, 17em) rotate3d(0, 0, 1, 90deg);
+     width: 90em;
+     height:55em;
+     display:grid;
+     grid-template-columns:90em;
+     grid-template-rows:8em 44em 3em;
+     grid-template-areas:"body-top"
+                         "body-middle"
+                         "body-bottom";
+     
+                          
+     }
+  #body_top{
+       grid-area:"body-top";
+  }
+  #body_middle{
+       grid-area:"body-middle";
+  }   
+  #body_bottom{
+       grid-area:"body-bottom";
+  }
+/*body contents*/
+
+/*top contents*/
+#body_top_container{
+     display:grid;
+     grid-template-rows:8em;
+     grid-template-columns:20em 50em 20em;
+     grid-template-areas:"top-logo top-emblem top-menu";
+  
+}
+
+#top_logo{
+     grid-area:"top-logo";
+}
+#top_emblem{
+     grid-area:"top-emblem";
+}
+#top_menu{
+     grid-area:"top-menu";
+}
+/*top child contents*/
+#top_emblem h1{
+        margin-top:0px;
+       font-size:10em;
+       color: black;
+       
+}
+
+/*middle contents*/
+#body_middle_container{
+      display:grid;
+      grid-template-rows:44em;
+      grid-template-columns:22em 22em 22em 24em;
+
+
+}
+#online_container{
+      grid-area:"online-container";
+}
+#message_container{
+      grid-area:"message-container";
+}
+#status_container{
+      grid-area:"status-container";
+      width:22em;
+      height:44em; 
+}
+#profile_image_container{
+      grid-area:"profile-image-container";
+}
+/*middle contents child contents*/
+/*profile image container*/
+#spacer_profile_pic{
+       width:23em;
+       height:4em;
+}
+#profile_picture{
+       width:23em;
+       height:30em;
+       background-image:url(images/default_profile.jpg);
+       border:1px dotted black;
+       
+} 
+/*middle child contents*/
+#status_container_contents{
+      display:grid;
+      width:22em;
+      height:42em; 
+      grid-row-gap:0.8em;
+
+}
+/*bottom contents*/
+#bottom_container h1{
+      margin-top:0.5em;
+}
