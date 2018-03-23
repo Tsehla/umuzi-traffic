@@ -4,21 +4,38 @@
 <title> Place and time log app</title>
 
 <link rel="stylesheet" href="main_style.css">
+    
+<style>
+    #body_contents_container{
+        display: none;
+    }
+    #login_container{
+        display: none;
+    }
+    #register_container{
+        display: none;
+    }
+    
+    </style>
+    
+
 
 </head>
 <body>
 
-
+   <p id="test" style="font-size: 2em">test</p>
+    
  <!-- body contents container -->
 <div id="body_contents_container">
-
+ 
 <!-- too contents -->
 <div id="body_top">
    <div id="body_top_container">
    <div id="top_logo"><!-- logo -->
+       <button id="alert">PeakIn</button>
    </div>
    <div id="top_emblem" align="center"> 
-     <h1>UMUZI</h1>
+    <!-- <h1>UMUZI</h1> ----------------------- --> 
    </div>
    <div id="top_menu" align="right"> 
       top menu
@@ -78,13 +95,65 @@
  <!-- bottom contents -->
 <div id="body_bottom" align="center">
       <div id="bottom_container">
-        <h1> Umuzi | traffic app | 2007</h1>
+       <!-- <h1>  Umuzi | traffic app | 2007 </h1>----------------- -->
       </div>
 </div>
-
-
+</div> <!-- </body contents container> -->
+<!--   Modal boxes -->
+    <!-- login -->
+    <div id="login_container">
+    <div id="login_pop">
+        <div id="login_email">
+            <p id="email_field_text" style="font-size: 2em">hello</p>
+        <input type="text" id="email_field" placeholder="Enter login email">
+        </div>
+        <p id="login_passowrd_text" style="font-size: 2em">hello</p>
+        <div id="login_password">
+        <input type="password" id="password_field" placeholder="Enter password">
+        </div>
+        <button id="login_button" onclick="user_login()">LogIn</button>
+        <p><a href="#" id="forgot_password">Forgot password</a>" "<a onclick="user_register_link()" href="#" id="user_register_link">Register</a></p></div>
+    </div>
+        
+    <!-- register -->
+        <div id="register_container">
+    <div id="register_pop">
+        <!--name -->
+        <input id="register_name" placeholder="Name">
+        <!--surname -->        
+        <input type="text" id="register_surname" placeholder="Surnanme">
+        <!--nickname -->
+        <input type="text" id="register_display_name" placeholder="Nickname">
+         <!--department --> 
+        <select id="register_department" >
+          <option value="na" selected>Choose department</option>
+         <option value="coding" >Coding</option>
+          <option value="Multimedia">Multimedia</option>
+          <option value="Graphics design">Graphic design</option>
+          <option value="Strategy">Strategy</option>
+        </select>
+        <!--date -->
+        <p id="date_chooser">Enter date you started at UMUZI</p>
+        <input type="date" id="register_date">
+        <!--email -->
+        <input type="text" id="register_email_field" placeholder="Enter login email">
+        <!--password -->
+        <input type="text" id="register_password_field" placeholder="Enter password">
+       <!-- register button-->
+        <button id="register_button" onclick="user_register()">Register</button>
+        <!--links  -->
+        <p><a href="#">Forgot password</a>" "<a href="#" onclick="user_login_link()">LogIn</a></p></div> 
+    
+    
+    </div><!-- login end -->
+    
+    
+    
+<!-- Modal Boxes end -->
+<script src="pouchdb.js"></script>    
 <script type="text/JavaScript" src="main_script.js"></script>
 
-</div> <!-- </body contents container> -->
+
+
 </body>
 </html>
