@@ -122,10 +122,23 @@ var stored_email=db.get(my_email).then(function(results){// get db email
   }); 
     
  var stored_password=db.get(my_email).then(function(results){// get db password
+     //var get date and time
+    var new_date=new Date();//date
+    var my_time=new_date.getHours().toString()+new_date.getMinutes().toString();//time
+    var my_day=new_date.getDay().toString();//day
                 
      if(my_password==results.password){// show dashboard
          dom_display("hide", "login_container");   
          dom_display("show", "body_contents_container");
+     //first check if date already updated for the day
+        if(results.login_date==my_day){
+           //do nothing
+        alert("date is already entered for today : no login time update to be made");
+           }
+           else{// if not enter today date and time
+                alert("time to be updated for today login");                      
+               }
+         db_sync();//sync new data
          success_login(results);//when login is successful fill data
             
    }
@@ -155,7 +168,11 @@ db.get(my_email).then(function(results){// check email duplicates before registe
        
  return alert("Error account exists, please login");
                     
-  }).catch(function(error){// if theres error means email does not exist in database                   
+  }).catch(function(error){// if theres error means email does not exist in database  
+    //set time
+    var new_date=new Date();
+    var my_time=new_date.getHours().toString()+new_date.getMinutes().toString();//time plus minutes
+    var my_day=new_date.getDate().toString();//day
           
     db.put({_id:my_email, //add user to database
             name:my_name,
@@ -165,8 +182,8 @@ db.get(my_email).then(function(results){// check email duplicates before registe
             startDate:my_start_date,
             myEmail:my_email,
             password:my_password,
-            umuzi_identity:"",//start date plus user birth day, too lazy to add birth 
-            clockin_time:"",//changed once a day
+            umuzi_identity:my_start_date,//start date plus user birth day, too lazy to add birth 
+            clockin_time:my_time,//changed once a day
             occupation:"Leaner",//can be changed to suit admin
             last_seen:"",//if time is x minutes after, person declared offline
             position:"",//user position, periodic check
@@ -174,6 +191,7 @@ db.get(my_email).then(function(results){// check email duplicates before registe
             recieved_messages:[],//will contain user email, en nameplus message, popup to send message to them as reply, 
             send_messages:"",//probably future feature
             status:"Changing the narative",//status
+            login_date:my_day
             
             }).then(function(sucess){//account created
         alert("Account greated, please login "+JSON.stringify(sucess));
@@ -197,21 +215,31 @@ db.get(my_email).then(function(results){// check email duplicates before registe
 }
 
 //-----------------------------------------------------------
+
+
 // on sucessful login
 function success_login(results){
-    //images link
+     //images link
     var profile_picture="<img src='http://www.contribcity.com/images/dummy-profile-pic.png'>";
+    //id number make up
+    var my_id_no="Umuzi"+results.umuzi_identity;
+    //my time separated hours and minutes
+    //var my_time=results.clockin_time;
+    //lastseen time and date updated regurlarly as user is online LOL;
+    var my_lastseen="Time "+results.clockin_time+" Date "+results.login_date;
     
      dom_write(results.name+" "+results.surname, "name");//name
      dom_write(results.nickname, "nickname");//nick name
      dom_write(results.status, "status");//status
      dom_write(results.umuzi_identity, "identity");//identity number
-     dom_write(results.clockin_time, "login");//clocked in
+     //dom_write(results.clockin_time, "login");//clocked in
      dom_write(results.position, "position");//position
      dom_write(results.last_seen, "lastseen");//lastseen
      dom_write(results.department, "department_value");//department
      dom_write(profile_picture, "profile_picture");//profile image
-    
+     dom_write(my_id_no, "identity");//umuzi id number clockin_time
+     dom_write(results.clockin_time, "login");//login time, lazy to add year and day
+     dom_write(my_lastseen, "lastseen");//lastseen login time updated hourly as user is online
     //images function
     
     
