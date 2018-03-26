@@ -99,12 +99,25 @@ body{background-color: ;
 #online_container{
       grid-area:"online-container";
       background-color: rgba(213, 209, 209, 0.39);
-      
-    
+      text-align: center;
+     
 }
+#online_container p{
+    color:black;
+    font-size:2em;
+    text-decoration: overline;
+}
+
 #message_container{
       grid-area:"message-container";
     background-color: rgba(187, 250, 191, 0.25);
+    text-align: center;
+}
+
+#message_container p{
+    color:black;
+    font-size:2em;
+    text-decoration: overline;
 }
 #status_container{
       grid-area:"status-container";

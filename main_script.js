@@ -1,3 +1,5 @@
+//greeting alert
+alert("Greetings, and welcome,\r\nI hope this message find you in good health, lol enough play\r\nThis app uses gps to check if user location is here first then gives them option to login.\r\nlogin details are verified against the database, if already registred access is granted, if not, they need to register.\r\nSee the web app code to see some of the functions I did not utilise, mostly cause i got tired and lazy to add, but well whatever.\r\nAnyway the break down is:\r\nApp gets gps of user current location, idealy its umuzi/bjala main entrance, and elevation should be no greater than ground level, that way theres no cloking in while you are in the third floor or on your bed in this building 'hahaha'\r\nthen after user sucessful login which theres no way around it, even after registering you gotta login 'hahaha',the app will capture the brawser time and store at the database as the time you clocked in at'''I still need to work on updating stored data contents, i have not yet gotten good knowledge of that part, en my head hurts now'''.\r\nThen the user is given the main screen which is basically designed to look like a card, inspiration from South african smart id's.\r\nThe user will be presented by stuff there, as well as get ability to recieve messages or send plus delete them individually,\r\nThe project was fun, so im sharing the fun with you guys, if any feel they may continue working on it.\r\n\r\nP.S\r\nThis message will continue on each login, cause i didnt implement a function to make it run once.\r\n'HAHAHAHAHAHAHAHAHAH'\r\nP.S use alerts by removing '''//'' to see how some things transfer data\r\nP.S this is the last one, the app was meant to be view in mobile devices in landscape, Ucommnet a CSS line that turn the app around,\r\nP.S the app is not yet responsive, us break point and change the CSS body font size for diffrent screen sizes ");
 
 //re-usable functions
 
@@ -93,7 +95,10 @@ var online_db=new PouchDB("https://6bd30398-1d34-4cfa-9296-e0c41660b6a6-bluemix.
 //db sync
 function db_sync(){//call database sycing
     
-  db.sync(online_db).then(function(sucess){alert("Online sync complete: "+JSON.stringify(sucess))}).catch(function(fail){alert("online sync faulty: "+JSON.stringify(fail))});   
+  db.sync(online_db).then(function(sucess){
+      //alert("Online sync complete: "+JSON.stringify(sucess));
+  })
+      .catch(function(fail){alert("online sync faulty: "+JSON.stringify(fail))});   
 }
 db_sync();//calling sync at first start
 // login
@@ -248,7 +253,9 @@ function success_login(results){
     
     
 }
-
+//onclick
+//menu onclik
+document.getElementById("top_menu").onclick=function(){alert("This supposed to be menu pop, to allow profile pic change, and status change");}
 
 
 //-------------------------------------------------------------
